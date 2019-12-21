@@ -114,7 +114,7 @@ MonoBehaviour:
   m_MinSize: {x: 683, y: 494}
   m_MaxSize: {x: 14004, y: 14044}
   vertical: 0
-  controlID: 135
+  controlID: 146
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -270,7 +270,7 @@ MonoBehaviour:
   m_MinSize: {x: 277, y: 294}
   m_MaxSize: {x: 4002, y: 8044}
   vertical: 1
-  controlID: 136
+  controlID: 147
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -290,8 +290,8 @@ MonoBehaviour:
     y: 0
     width: 335
     height: 275
-  m_MinSize: {x: 202, y: 222}
-  m_MaxSize: {x: 4002, y: 4022}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 20}
@@ -441,9 +441,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 5.9886394, y: -106.829384, z: 233.54883}
+    m_Target: {x: -0.014803137, y: -0.0253517, z: 0.0935401}
     speed: 2
-    m_Value: {x: 5.9886394, y: -106.829384, z: 233.54883}
+    m_Value: {x: -0.014803137, y: -0.0253517, z: 0.0935401}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -472,13 +472,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: 0.006609322, y: -0.010804533, z: 0.00007185128, w: 0.9999216}
+    m_Target: {x: 0.19450949, y: -0.0385437, z: 0.007648865, w: 0.98011696}
     speed: 2
-    m_Value: {x: 0.00960868, y: -0.013803884, z: 0.00013309122, w: 0.9998586}
+    m_Value: {x: 0.19450878, y: -0.03854356, z: 0.007648837, w: 0.9801133}
   m_Size:
-    m_Target: 231.76898
+    m_Target: 0.13654828
     speed: 2
-    m_Value: 242.69003
+    m_Value: 0.13654828
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -596,7 +596,7 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -2940
+  m_LastSelectedObjectID: 19842
 --- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -634,22 +634,22 @@ MonoBehaviour:
     m_SceneHandles: 
     m_ShowAllHits: 0
     m_SkipHidden: 0
-    m_SearchArea: 1
+    m_SearchArea: 0
     m_Folders:
-    - Assets/Scripts
+    - Assets/Prefabs
   m_ViewMode: 1
   m_StartGridSize: 71
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/Prefabs
   m_LastFoldersGridSize: 71
   m_LastProjectPath: C:\Users\0ta52\Documents\ARTerminalManual\ARTerminalManual
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 10340000
-    m_LastClickedID: 13328
-    m_ExpandedIDs: 000000000030000000ca9a3b
+    m_SelectedIDs: 50330000
+    m_LastClickedID: 13136
+    m_ExpandedIDs: 000000000a3000000232000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -677,7 +677,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000000300000
+    m_ExpandedIDs: 000000000a30000002320000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -788,23 +788,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 46caffff
-      m_LastClickedID: -13754
-      m_ExpandedIDs: 46caffff84f4ffffd8f4ffffe2f4ffff06f7ffff3cf7ffff46f7ffffe0f7ffff16f8ffff20f8fffff8f8ffff2ef9ffff42faffff6efbffff
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: b8cbffffeecbfffff4ccffffe6cdffff1cceffff22cfffff1ad0ffff50d0ffff60d1ffff9ad4ffffd0d4ffffe4d4ffff00d8ffff36d8ffff40d8ffff30dbffff66dbffff6cdcffff90ecffffc6ecffffd0ecffff78eeffffaeeeffffb8eeffff4cf6ffff82f6ffff92f7ffff3afbffff94410000fa41000020490000ea4a0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: Manual
+        m_OriginalName: Manual
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: 16788
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 12}
       m_SearchString: 
@@ -877,4 +877,4 @@ MonoBehaviour:
     m_PrefName: Preview_InspectorPreview
   m_PreviewWindow: {fileID: 0}
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 180
+  m_LastVerticalScrollValue: 0

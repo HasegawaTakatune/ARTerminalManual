@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
@@ -66,6 +67,7 @@ public class Manual : MonoBehaviour
     private void Awake()
     {
         Resize(isMax);
+        
     }
 
     /// <summary>
@@ -120,74 +122,12 @@ public class Manual : MonoBehaviour
     /// <summary>
     /// 
     /// </summary>
-    /// <param name="path"></param>
+    /// <param name="bytes"></param>
     /// <returns></returns>
-    private IEnumerator LoadInfo(string path)
+    private Texture Binary2Texture(byte[] bytes)
     {
-        // ファイルの存在確認
-        if (!System.IO.File.Exists(path))
-        {
-            yield break;
-        }
-
-        // ファイル読み込み
-        WWW request = new WWW(Common.FILE_HEADER + Common.INFO_FILE_PATH + path);
-
-        // 読み込み待ち
-        while (!request.isDone)
-        {
-            yield return new WaitForEndOfFrame();
-        }
-
-        string[] slice = request.text.Split('\n');
-
-        if (slice.Length == 4)
-        {
-            NameUI.text = slice[0];
-            ExplanationUI.text = slice[1];
-            string[] item = new string[] { slice[2], slice[3] };
-            LoadImage(item);
-        }
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="path"></param>
-    /// <returns></returns>
-    private IEnumerator LoadImage(string[] path)
-    {
-        if (path.Length != 2) yield break;
-
-        WWW request = null;
-        Sprite sprite = null;
-
-        for (int i = 0; i < path.Length; i++)
-        {
-            // ファイルの存在確認
-            if (!System.IO.File.Exists(path[i]))
-            {
-                yield break;
-            }
-
-            // ファイル読み込み
-            request = new WWW(Common.FILE_HEADER + Common.IMAGE_FILE_PATH + path[i]);
-
-            // 読み込み待ち
-            while (!request.isDone)
-            {
-                yield return new WaitForEndOfFrame();
-            }
-
-            // 画像を取り出す
-            Texture2D texture = request.texture;
-
-            // 読み込んだ画像からSpriteを作成する
-            sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
-
-            ImageUI[i].sprite = sprite;
-        }
-
-        yield return 0;
+        Texture2D texture = new Texture2D(1, 1);
+        texture.LoadImage(bytes);
+        return texture;
     }
 }

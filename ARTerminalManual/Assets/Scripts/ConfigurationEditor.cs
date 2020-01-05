@@ -5,17 +5,9 @@ using UnityEngine;
 
 public class ConfigurationEditor : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    // 画像ファイルをバイナリデータに変換するもの
+    // ファイルデータ→サーバのデータの持たせ方をちゃんと決めていないため保留
+    // サーバに画像データをそのまま保存できるらしいので、このクラス廃止になるかも？
 
     private byte[] ReadFile2Binary(string path)
     {

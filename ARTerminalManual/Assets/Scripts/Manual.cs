@@ -7,7 +7,7 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 
 /// <summary>
-/// 
+/// 接続端子説明UI
 /// </summary>
 public class Manual : MonoBehaviour
 {

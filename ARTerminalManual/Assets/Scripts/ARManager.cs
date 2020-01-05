@@ -1,35 +1,34 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using GoogleARCore;
 using UnityEngine;
 
 /// <summary>
-/// 
+/// ARマネージャー
 /// </summary>
 public class ARManager : MonoBehaviour
 {
     /// <summary>
-    /// 
+    /// トラッキングするリスト
     /// </summary>
     private List<AugmentedImage> augmentedImages = new List<AugmentedImage>();
 
     /// <summary>
-    /// 
+    /// マーカーを認識した際に表示するプレファブ
     /// </summary>
     [SerializeField] private GameObject prefab = default;
 
     /// <summary>
-    /// 
+    /// マーカーを認識した際に生成したオブジェクト
     /// </summary>
     private GameObject ARObj = default;
 
     /// <summary>
-    /// 
+    /// 生成したアイテムリスト
     /// </summary>
     private List<string> itemList = new List<string>();
 
     /// <summary>
-    /// 
+    /// メインループ
     /// </summary>
     private void Update()
     {

@@ -50,4 +50,9 @@ public static class Common
     /// </summary>
     public const string INFO_FILE_PATH = "ARTerminalManual/Text/";
 
+    /// <summary>
+    /// ファイル選択のフィルター（画像ファイル）
+    /// </summary>
+    public const string FILTER_IMAGE_FILE = "JPGファイル|*.jpeg,*.jpg,*|PNGファイル|*.png";
+
 }

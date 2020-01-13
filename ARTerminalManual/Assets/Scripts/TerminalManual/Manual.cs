@@ -10,59 +10,44 @@ using UnityEngine.UI;
 /// 接続端子説明UI
 /// </summary>
 public class Manual : MonoBehaviour
-{
+{    
     /// <summary>
-    /// 
-    /// </summary>
-    [SerializeField] private string Name;
-
-    /// <summary>
-    /// 
-    /// </summary>
-    [SerializeField, TextArea] private string Explanation;
-
-    /// <summary>
-    /// 
-    /// </summary>
-    [SerializeField] private Image[] Images = new Image[2];
-
-    /// <summary>
-    /// 
+    /// パネル
     /// </summary>
     [SerializeField] private RectTransform Panel;
 
     /// <summary>
-    /// 
+    /// 名前
     /// </summary>
     [SerializeField] private Text NameUI;
 
     /// <summary>
-    /// 
+    /// 説明
     /// </summary>
     [SerializeField] private Text ExplanationUI;
 
     /// <summary>
-    /// 
+    /// イメージ画像
     /// </summary>
     [SerializeField] private Image[] ImageUI = new Image[2];
 
     /// <summary>
-    /// 
+    /// more/returnボタン
     /// </summary>
     [SerializeField] private RectTransform ResizeButton;
 
     /// <summary>
-    /// 
+    /// more/returnボタンのテキスト
     /// </summary>
     [SerializeField] private Text ResizeText;
 
     /// <summary>
-    /// 
+    /// サイズ変更フラグ
     /// </summary>
     private bool isMax = false;
 
     /// <summary>
-    /// 
+    /// 初期化
     /// </summary>
     private void Awake()
     {
@@ -85,7 +70,7 @@ public class Manual : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// more/returnボタンクリックイベント
     /// </summary>
     public void OnClickResize()
     {
@@ -94,9 +79,9 @@ public class Manual : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// パネルサイズ変更処理
     /// </summary>
-    /// <param name="isMaxsize"></param>
+    /// <param name="isMaxsize">サイズ true:最大 false:最小</param>
     private void Resize(bool isMaxsize)
     {
         if (isMaxsize)
@@ -120,9 +105,9 @@ public class Manual : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// バイナリ―データをテクスチャに変換する
     /// </summary>
-    /// <param name="bytes"></param>
+    /// <param name="bytes">画像データ</param>
     /// <returns></returns>
     private Texture Binary2Texture(byte[] bytes)
     {

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Windows.Forms;
 using System.IO;
+using System;
 
 /// <summary>
 /// ファイル選択ダイヤログ
@@ -16,13 +17,20 @@ public class FileControll : MonoBehaviour
     /// <returns>ファイルパス</returns>
     public static string OpenExistFile(string filter = "", string fileName = "Desktop")
     {
-        // 開くファイルを指定する、ファイルが存在しない場合は警告を出す(true)、出さない(false)
-        OpenFileDialog openFileDialog = new OpenFileDialog { FileName = fileName, Filter = filter, CheckFileExists = false };
-        // ダイヤログを開く
-        if (openFileDialog.ShowDialog() == DialogResult.OK)
+        try
         {
-            // 取得したファイル名をInputFieldに代入する
-            return openFileDialog.FileName;
+            // 開くファイルを指定する、ファイルが存在しない場合は警告を出す(true)、出さない(false)
+            OpenFileDialog openFileDialog = new OpenFileDialog { FileName = fileName, Filter = filter, CheckFileExists = false };
+            // ダイヤログを開く
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                // 取得したファイル名をInputFieldに代入する
+                return openFileDialog.FileName;
+            }
+        }
+        catch (Exception e)
+        {
+            throw e;
         }
         return string.Empty;
     }
@@ -35,31 +43,39 @@ public class FileControll : MonoBehaviour
     public static Texture2D FileStream2Texture2D(string path)
     {
         Texture2D texture = null;
-        if (File.Exists(path))
+
+        try
         {
-            // byte取得
-            FileStream fileStream = new FileStream(path, FileMode.Open, FileAccess.Read);
-            BinaryReader binary = new BinaryReader(fileStream);
-            byte[] readBinary = binary.ReadBytes((int)binary.BaseStream.Length);
-            binary.Close();
-            fileStream.Dispose();
-            fileStream = null;
-
-            if (readBinary != null)
+            if (File.Exists(path))
             {
-                int pos = 16;
-                // 横サイズ
-                int width = 0;
-                for (int i = 0; i < 4; i++) width = width * 256 + readBinary[pos++];
-                // 縦サイズ
-                int height = 0;
-                for (int i = 0; i < 4; i++) height = height * 256 + readBinary[pos++];
+                // byte取得
+                FileStream fileStream = new FileStream(path, FileMode.Open, FileAccess.Read);
+                BinaryReader binary = new BinaryReader(fileStream);
+                byte[] readBinary = binary.ReadBytes((int)binary.BaseStream.Length);
+                binary.Close();
+                fileStream.Dispose();
+                fileStream = null;
 
-                // byteからtexture2D作成
-                texture = new Texture2D(80, 80);
-                texture.LoadImage(readBinary);
+                if (readBinary != null)
+                {
+                    int pos = 16;
+                    // 横サイズ
+                    int width = 0;
+                    for (int i = 0; i < 4; i++) width = width * 256 + readBinary[pos++];
+                    // 縦サイズ
+                    int height = 0;
+                    for (int i = 0; i < 4; i++) height = height * 256 + readBinary[pos++];
+
+                    // byteからtexture2D作成
+                    texture = new Texture2D(80, 80);
+                    texture.LoadImage(readBinary);
+                }
+                readBinary = null;
             }
-            readBinary = null;
+        }
+        catch (Exception e)
+        {
+            throw e;
         }
         return texture;
     }
@@ -71,13 +87,18 @@ public class FileControll : MonoBehaviour
     /// <returns>バイナリ―データ</returns>
     private byte[] ReadFile2Binary(string path)
     {
-        using (FileStream fileStream = new FileStream(path, FileMode.Open, FileAccess.Read))
+        try
         {
-            BinaryReader binaryReader = new BinaryReader(fileStream);
-            byte[] binary = binaryReader.ReadBytes((int)binaryReader.BaseStream.Length);
-            binaryReader.Close();
-            return binary;
+            using (FileStream fileStream = new FileStream(path, FileMode.Open, FileAccess.Read))
+            {
+                BinaryReader binaryReader = new BinaryReader(fileStream);
+                byte[] binary = binaryReader.ReadBytes((int)binaryReader.BaseStream.Length);
+                binaryReader.Close();
+                return binary;
+            }
+        }catch (Exception e)
+        {
+            throw e;
         }
     }
-
 }

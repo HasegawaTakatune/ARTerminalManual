@@ -10,21 +10,21 @@ using UnityEngine.UI;
 /// 接続端子説明UI
 /// </summary>
 public class Manual : MonoBehaviour
-{    
+{
     /// <summary>
     /// パネル
     /// </summary>
-    [SerializeField] private RectTransform Panel;
+    [SerializeField] private RectTransform Panel = default;
 
     /// <summary>
     /// 名前
     /// </summary>
-    [SerializeField] private Text NameUI;
+    [SerializeField] private Text NameUI = default;
 
     /// <summary>
     /// 説明
     /// </summary>
-    [SerializeField] private Text ExplanationUI;
+    [SerializeField] private Text ExplanationUI = default;
 
     /// <summary>
     /// イメージ画像
@@ -34,12 +34,12 @@ public class Manual : MonoBehaviour
     /// <summary>
     /// more/returnボタン
     /// </summary>
-    [SerializeField] private RectTransform ResizeButton;
+    [SerializeField] private RectTransform ResizeButton = default;
 
     /// <summary>
     /// more/returnボタンのテキスト
     /// </summary>
-    [SerializeField] private Text ResizeText;
+    [SerializeField] private Text ResizeText = default;
 
     /// <summary>
     /// サイズ変更フラグ
@@ -52,7 +52,7 @@ public class Manual : MonoBehaviour
     private void Awake()
     {
         Resize(isMax);
-        
+
     }
 
     /// <summary>

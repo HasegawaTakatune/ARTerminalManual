@@ -55,4 +55,20 @@ public static class Common
     /// </summary>
     public const string FILTER_IMAGE_FILE = "JPGファイル|*.jpeg,*.jpg,*|PNGファイル|*.png";
 
+    /// <summary>
+    /// ダイアログ
+    /// </summary>
+    private static Dialog _dialog = null;
+    /// <summary>
+    /// ダイアログ
+    /// </summary>
+    public static Dialog Dialog { set { if (_dialog = null) _dialog = value; } }
+    /// <summary>
+    /// ダイアログ表示
+    /// </summary>
+    /// <param name="t">タイトル</param>
+    /// <param name="m">メッセージ</param>
+    /// <returns>成功の可否</returns>
+    public static void ShowDialog(string t = "Title", string m = "Message") { try { if (_dialog != null) _dialog.ShowDialog(t, m); } catch { } }
+
 }

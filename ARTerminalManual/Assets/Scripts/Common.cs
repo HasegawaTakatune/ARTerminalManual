@@ -18,7 +18,7 @@ public static class Common
     /// <summary>
     /// 端子説明UI　詳細説明モード時の名前の配置
     /// </summary>
-    public static readonly Vector2 NAME_EXPLANATION_MODE = new Vector2(0, 120);
+    public static readonly Vector2 NAME_DESCRIPTION_MODE = new Vector2(0, 120);
 
     /// <summary>
     /// 端子説明UI　縮小モード時の名前の配置
@@ -28,7 +28,7 @@ public static class Common
     /// <summary>
     /// 接続端子UI　詳細説明モード時のリサイズボタンの配置
     /// </summary>
-    public static readonly Vector2 RESIZE_EXPLANATION_MODE = new Vector2(25, -220);
+    public static readonly Vector2 RESIZE_DESCRIPTION_MODE = new Vector2(25, -220);
 
     /// <summary>
     /// 端子説明UI　縮小モード時のリサイズボタンの配置

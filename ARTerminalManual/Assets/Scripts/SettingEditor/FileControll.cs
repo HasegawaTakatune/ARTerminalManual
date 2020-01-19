@@ -81,11 +81,11 @@ public class FileControll : MonoBehaviour
     }
 
     /// <summary>
-    /// 読み込んだファイルをバイナリ―データに変換する
+    /// 読み込んだファイルをバイナリデータに変換する
     /// </summary>
     /// <param name="path">ファイルパス</param>
-    /// <returns>バイナリ―データ</returns>
-    private byte[] ReadFile2Binary(string path)
+    /// <returns>バイナリデータ</returns>
+    public static byte[] ReadFile2Binary(string path)
     {
         try
         {
@@ -96,7 +96,27 @@ public class FileControll : MonoBehaviour
                 binaryReader.Close();
                 return binary;
             }
-        }catch (Exception e)
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+    }
+
+    /// <summary>
+    /// バイナリデータをテクスチャに変換する
+    /// </summary>
+    /// <param name="binary">バイナリ</param>
+    /// <returns>テクスチャ</returns>
+    public static Texture2D ReadTexture2Binary(byte[] binary)
+    {
+        try
+        {
+            Texture2D texture = new Texture2D(80, 80);
+            texture.LoadImage(binary);
+            return texture;
+        }
+        catch (Exception e)
         {
             throw e;
         }

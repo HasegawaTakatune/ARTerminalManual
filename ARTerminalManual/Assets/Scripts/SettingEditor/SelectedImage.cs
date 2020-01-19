@@ -13,6 +13,11 @@ public class SelectedImage : MonoBehaviour
     [SerializeField] private Image image = default;
 
     /// <summary>
+    /// バイナリデータ
+    /// </summary>
+    public byte[] binary;
+
+    /// <summary>
     /// ファイル選択ボタンクリックイベント
     /// </summary>
     public void OnClickSelectedFilePath()
@@ -27,6 +32,10 @@ public class SelectedImage : MonoBehaviour
             // Texture2DをSpriteに変換してImageに設定する
             Texture2D texture = FileControll.FileStream2Texture2D(filePath);
             image.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.zero);
+
+            // 取得したファイルからバイナリデータを取得する
+            binary = FileControll.ReadFile2Binary(filePath);
+
         }
         catch (Exception e)
         {

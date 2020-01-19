@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace NCMB.Tasks
 {
-    public static class NCMBObjectTaskExtension
+    public static class NCMBFileTaskExtension
     {
         /// <summary>
         /// 非同期処理でオブジェクトの取得を行います。<br/>

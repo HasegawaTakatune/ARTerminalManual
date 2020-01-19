@@ -24,7 +24,7 @@ public class Manual : MonoBehaviour
     /// <summary>
     /// 説明
     /// </summary>
-    [SerializeField] private Text ExplanationUI = default;
+    [SerializeField] private Text DescriptionUI = default;
 
     /// <summary>
     /// イメージ画像
@@ -56,7 +56,7 @@ public class Manual : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// 初期化
     /// </summary>
     /// <param name="name"></param>
     public void Init(string name = "")
@@ -65,7 +65,7 @@ public class Manual : MonoBehaviour
         {
             //LoadInfo(name);
             NameUI.text = name;
-            ExplanationUI.text = name;
+            DescriptionUI.text = name;
         }
     }
 
@@ -87,8 +87,8 @@ public class Manual : MonoBehaviour
         if (isMaxsize)
         {
             Panel.localScale = Common.MAX_SIZE;
-            NameUI.rectTransform.localPosition = Common.NAME_EXPLANATION_MODE;
-            ResizeButton.localPosition = Common.RESIZE_EXPLANATION_MODE;
+            NameUI.rectTransform.localPosition = Common.NAME_DESCRIPTION_MODE;
+            ResizeButton.localPosition = Common.RESIZE_DESCRIPTION_MODE;
             ResizeText.text = "return◀";
         }
         else
@@ -99,7 +99,7 @@ public class Manual : MonoBehaviour
             ResizeText.text = "more▶";
         }
 
-        ExplanationUI.enabled = isMaxsize;
+        DescriptionUI.enabled = isMaxsize;
         for (int i = 0; i < ImageUI.Length; i++)
             ImageUI[i].enabled = isMaxsize;
     }

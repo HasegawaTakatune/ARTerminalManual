@@ -10,6 +10,7 @@ public class PanelController : MonoBehaviour
     /// オブジェクトID
     /// </summary>
     public string ObjectID = "";
+    public bool isObjectIDNullOrEmpty { get { return string.IsNullOrEmpty(ObjectID); } }
 
     /// <summary>
     /// イメージ画像1
@@ -23,6 +24,10 @@ public class PanelController : MonoBehaviour
     /// RQ画像
     /// </summary>
     public const int IMAGEQR = 2;
+    /// <summary>
+    /// イメージ画像定数の長さ
+    /// </summary>
+    public const int IMAGE_LENGTH = 3;
 
     /// <summary>
     /// 名前
@@ -55,6 +60,7 @@ public class PanelController : MonoBehaviour
 
     [SerializeField] private Texture2D[] _texture2Ds = new Texture2D[3];
     public Texture2D GetTexture2D(int index) { return _texture2Ds[index]; }
+    public bool CheckTexture2D(int index) { return (_texture2Ds[index] != null); }
     public string GetTexture2D_Name(int index)
     {
         switch (index)

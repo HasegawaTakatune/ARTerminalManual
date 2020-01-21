@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using GoogleARCore;
 
 /// <summary>
 /// コモンアイテム

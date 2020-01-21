@@ -222,7 +222,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Quality:0
+  m_Text: Quality:000
 --- !u!1 &1950821836987654816
 GameObject:
   m_ObjectHideFlags: 0
@@ -933,7 +933,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7635369080644572944}
-        m_MethodName: OnClickSelectedFilePath
+        m_MethodName: OnClickSelectedQRFilePathAsync
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -957,6 +957,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 4401910886690355667}
   QRMarkerQuality: {fileID: 5855627939810780241}
+  imageDatabase: {fileID: 11400000, guid: 553a91a2704854f408ae755e89b5b379, type: 2}
+  img: {fileID: 2800000, guid: 2af9ab60abe73d847bbd99e379dfc08b, type: 3}
   binary: 
 --- !u!1 &4978226488732572274
 GameObject:
@@ -1179,6 +1181,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 5273894127130686890}
   QRMarkerQuality: {fileID: 0}
+  imageDatabase: {fileID: 0}
+  img: {fileID: 0}
   binary: 
 --- !u!1 &5273894126635478626
 GameObject:
@@ -1547,6 +1551,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 5273894126635478624}
   QRMarkerQuality: {fileID: 0}
+  imageDatabase: {fileID: 0}
+  img: {fileID: 0}
   binary: 
 --- !u!1 &5273894127905775414
 GameObject:
@@ -2021,8 +2027,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 233, y: -19}
-  m_SizeDelta: {x: 80, y: 30}
+  m_AnchoredPosition: {x: 230, y: -10}
+  m_SizeDelta: {x: 95, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7710948067054609748
 CanvasRenderer:
@@ -2119,7 +2125,7 @@ MonoBehaviour:
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
-  m_Text: Quality:0
+  m_Text: Quality:000
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 1

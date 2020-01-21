@@ -1,5 +1,6 @@
 ﻿using GoogleARCore;
 using System;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,9 +20,9 @@ public class SelectedImage : MonoBehaviour
     [SerializeField] private Text QRMarkerQuality = default;
 
     /// <summary>
-    /// ARCoreセッション
+    /// 
     /// </summary>
-    private ARCoreSessionConfig sessionConfig = default;
+    [SerializeField] private AugmentedImageDatabase imageDatabase = default;
 
     /// <summary>
     /// バイナリデータ
@@ -57,15 +58,10 @@ public class SelectedImage : MonoBehaviour
     /// <summary>
     /// ファイル選択ボタンクリックイベント
     /// </summary>
-    public void OnClickSelectedQRFilePath()
+    public void OnClickSelectedQRFilePathAsync()
     {
         try
         {
-            if (QRMarkerQuality == null) return;
-
-            if (sessionConfig == null)
-                sessionConfig = new ARCoreSessionConfig();
-
             // 画像ファイル取得
             string filePath = FileControll.OpenExistFile(Common.FILTER_IMAGE_FILE);
 
@@ -75,10 +71,10 @@ public class SelectedImage : MonoBehaviour
             Texture2D texture = FileControll.FileStream2Texture2D(filePath);
             image.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.zero);
 
-            // ARマーカを取得しスコアを表示して開放する
-            int index = sessionConfig.AugmentedImageDatabase.AddImage("None", texture, 1);
-            QRMarkerQuality.text = "Quality:" + sessionConfig.AugmentedImageDatabase[index].Quality;
-            sessionConfig.AugmentedImageDatabase.RemoveAt(index);
+            if (imageDatabase == null || QRMarkerQuality == null) return;
+
+            // ARマーカを取得しスコアを表示して開放する                 
+            Task task = ShowImageQuality(texture);
 
             // 取得したファイルからバイナリデータを取得する
             binary = FileControll.ReadFile2Binary(filePath);
@@ -87,6 +83,28 @@ public class SelectedImage : MonoBehaviour
         catch (Exception e)
         {
             Common.ShowDialog("Error", e.Message);
+        }
+    }
+
+
+    private async Task ShowImageQuality(Texture2D texture)
+    {
+        try
+        {
+            if (imageDatabase == null)
+                imageDatabase = GameObject.Find("ARCore Device").GetComponent<ARCoreSession>().SessionConfig.AugmentedImageDatabase;
+
+            Debug.Log("Check Start");
+            int index = 0;
+            index = await Task.Run(() => imageDatabase.AddImage("TEST", texture, 1));
+
+            Debug.Log("ImageDatabase index:" + index);
+            QRMarkerQuality.text = "Quality:" + imageDatabase[index].Quality;
+            Debug.Log("Quality:" + imageDatabase[index].Quality);
+        }
+        catch (Exception e)
+        {
+            throw e;
         }
     }
 }

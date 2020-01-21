@@ -61,7 +61,8 @@ public class ARManager : MonoBehaviour
                     }
                 }
             }
-        }catch(Exception e)
+        }
+        catch (Exception e)
         {
             Common.ShowDialog("Error", e.Message + "\n" + "アプリを再起動してください。");
         }

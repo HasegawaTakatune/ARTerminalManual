@@ -58,13 +58,13 @@ public class FileControll : MonoBehaviour
 
                 if (readBinary != null)
                 {
-                    int pos = 16;
-                    // 横サイズ
-                    int width = 0;
-                    for (int i = 0; i < 4; i++) width = width * 256 + readBinary[pos++];
-                    // 縦サイズ
-                    int height = 0;
-                    for (int i = 0; i < 4; i++) height = height * 256 + readBinary[pos++];
+                    //int pos = 16;
+                    //// 横サイズ
+                    //int width = 0;
+                    //for (int i = 0; i < 4; i++) width = width * 256 + readBinary[pos++];
+                    //// 縦サイズ
+                    //int height = 0;
+                    //for (int i = 0; i < 4; i++) height = height * 256 + readBinary[pos++];
 
                     // byteからtexture2D作成
                     texture = new Texture2D(80, 80);
@@ -72,6 +72,40 @@ public class FileControll : MonoBehaviour
                 }
                 readBinary = null;
             }
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+        return texture;
+    }
+
+    /// <summary>
+    /// テクスチャファイルの取得
+    /// </summary>
+    /// <param name="binary">バイナリ</param>
+    /// <returns>テクスチャ</returns>
+    public static Texture2D Binary2Texture2D(byte[] binary)
+    {
+        Texture2D texture = null;
+
+        try
+        {           
+            if (binary != null)
+            {
+                //int pos = 16;
+                //// 横サイズ
+                //int width = 0;
+                //for (int i = 0; i < 4; i++) width = width * 256 + readBinary[pos++];
+                //// 縦サイズ
+                //int height = 0;
+                //for (int i = 0; i < 4; i++) height = height * 256 + readBinary[pos++];
+
+                // byteからtexture2D作成
+                texture = new Texture2D(80, 80);
+                texture.LoadImage(binary);
+            }
+            binary = null;
         }
         catch (Exception e)
         {

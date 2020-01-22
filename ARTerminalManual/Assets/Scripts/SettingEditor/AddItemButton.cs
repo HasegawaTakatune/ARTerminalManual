@@ -4,7 +4,7 @@ using System;
 /// <summary>
 /// 設定項目の追加を行う
 /// </summary>
-public class AddSettingItem : MonoBehaviour
+public class AddItemButton : MonoBehaviour
 {
     /// <summary>
     /// 追加先のコンテンツ

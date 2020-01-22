@@ -72,4 +72,17 @@ public static class Common
     /// <returns>成功の可否</returns>
     public static void ShowDialog(string t = "Title", string m = "Message") { try { if (_dialog != null) _dialog.ShowDialog(t, m); } catch { } }
 
+    /// <summary>
+    /// 取得データの一時保存
+    /// </summary>
+    public struct PANEL_DATA_SET
+    {
+        public string object_ID;
+        public string name;
+        public string description;
+        public byte[] image1;
+        public byte[] image2;
+        public byte[] image_marker;
+    }
+
 }

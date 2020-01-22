@@ -114,7 +114,7 @@ MonoBehaviour:
   m_MinSize: {x: 683, y: 344}
   m_MaxSize: {x: 12008, y: 8044}
   vertical: 0
-  controlID: 145
+  controlID: 142
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -270,7 +270,7 @@ MonoBehaviour:
   m_MinSize: {x: 277, y: 294}
   m_MaxSize: {x: 4002, y: 8044}
   vertical: 1
-  controlID: 146
+  controlID: 143
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -317,8 +317,8 @@ MonoBehaviour:
     y: 275
     width: 335
     height: 496
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 277, y: 72}
+  m_MaxSize: {x: 4002, y: 4022}
   m_ActualView: {fileID: 22}
   m_Panes:
   - {fileID: 22}
@@ -596,7 +596,7 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 14826
+  m_LastSelectedObjectID: -11892
 --- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -636,19 +636,19 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/Dialog
+    - Assets/Prefabs
   m_ViewMode: 1
   m_StartGridSize: 71
   m_LastFolders:
-  - Assets/Scripts/Dialog
+  - Assets/Prefabs
   m_LastFoldersGridSize: 71
   m_LastProjectPath: C:\Users\0ta52\Documents\ARTerminalManual\ARTerminalManual
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 109}
-    m_SelectedIDs: 0a370000
-    m_LastClickedID: 14090
+    scrollPos: {x: 0, y: 79}
+    m_SelectedIDs: 24360000
+    m_LastClickedID: 13860
     m_ExpandedIDs: 00000000a8320000be340000dc3600000437000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -702,8 +702,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 38f5ffff
-    m_LastClickedInstanceID: -2760
+    m_SelectedInstanceIDs: 8cd1ffff
+    m_LastClickedInstanceID: -11892
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000aa3200006239000000000000
     m_RenameOverlay:
@@ -787,10 +787,10 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: c2f0fffffaf0ffff58f2ffffeaf5ffff6efbffff603900007839000092390000ca390000
+      scrollPos: {x: 0, y: 17}
+      m_SelectedIDs: 8cd1ffff
+      m_LastClickedID: -11892
+      m_ExpandedIDs: 30ebffff02eeffffaaf0ffff82f4ffff6efbffff603900007839000092390000ca390000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 

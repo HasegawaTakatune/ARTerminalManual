@@ -8,7 +8,7 @@ public class SaveButton : MonoBehaviour
     /// <summary>
     /// サーバ処理クラス
     /// </summary>
-    [SerializeField] private DataServerAccess serverAccess = default;
+    [SerializeField] private DataServerAccess_SettingEditor serverAccess = default;
 
     /// <summary>
     /// 登録ボタンクリックイベント
@@ -16,6 +16,6 @@ public class SaveButton : MonoBehaviour
     public void OnClickSaveButton()
     {
         if (serverAccess != null)
-            serverAccess.SaveSettingData();
+            serverAccess.SaveData();
     }
 }

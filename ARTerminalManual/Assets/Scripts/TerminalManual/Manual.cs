@@ -12,6 +12,36 @@ using UnityEngine.UI;
 public class Manual : MonoBehaviour
 {
     /// <summary>
+    /// 最大サイズ
+    /// </summary>
+    public static readonly Vector3 MAX_SIZE = new Vector3(1.2f, 4.0f, 1.0f);
+
+    /// <summary>
+    /// 最小サイズ
+    /// </summary>
+    public static readonly Vector3 MIN_SIZE = new Vector3(1.2f, 0.5f, 1.0f);
+
+    /// <summary>
+    /// 端子説明UI　詳細説明モード時の名前の配置
+    /// </summary>
+    public static readonly Vector2 NAME_DESCRIPTION_MODE = new Vector2(0, 120);
+
+    /// <summary>
+    /// 端子説明UI　縮小モード時の名前の配置
+    /// </summary>
+    public static readonly Vector2 NAME_MINIMAMU_MODE = new Vector2(0, -40);
+
+    /// <summary>
+    /// 接続端子UI　詳細説明モード時のリサイズボタンの配置
+    /// </summary>
+    public static readonly Vector2 RESIZE_DESCRIPTION_MODE = new Vector2(25, -220);
+
+    /// <summary>
+    /// 端子説明UI　縮小モード時のリサイズボタンの配置
+    /// </summary>
+    public static readonly Vector2 RESIZE_MINIMAMU_MODE = new Vector2(25, -60);
+
+    /// <summary>
     /// パネル
     /// </summary>
     [SerializeField] private RectTransform Panel = default;
@@ -86,16 +116,16 @@ public class Manual : MonoBehaviour
     {
         if (isMaxsize)
         {
-            Panel.localScale = Common.MAX_SIZE;
-            NameUI.rectTransform.localPosition = Common.NAME_DESCRIPTION_MODE;
-            ResizeButton.localPosition = Common.RESIZE_DESCRIPTION_MODE;
+            Panel.localScale = MAX_SIZE;
+            NameUI.rectTransform.localPosition = NAME_DESCRIPTION_MODE;
+            ResizeButton.localPosition = RESIZE_DESCRIPTION_MODE;
             ResizeText.text = "return◀";
         }
         else
         {
-            Panel.localScale = Common.MIN_SIZE;
-            NameUI.rectTransform.localPosition = Common.NAME_MINIMAMU_MODE;
-            ResizeButton.localPosition = Common.RESIZE_MINIMAMU_MODE;
+            Panel.localScale = MIN_SIZE;
+            NameUI.rectTransform.localPosition = NAME_MINIMAMU_MODE;
+            ResizeButton.localPosition = RESIZE_MINIMAMU_MODE;
             ResizeText.text = "more▶";
         }
 

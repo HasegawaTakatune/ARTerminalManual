@@ -8,7 +8,6 @@ using System;
 /// </summary>
 public class FileControll : MonoBehaviour
 {
-
     /// <summary>
     /// ファイル選択ダイヤログ表示
     /// </summary>
@@ -90,7 +89,7 @@ public class FileControll : MonoBehaviour
         Texture2D texture = null;
 
         try
-        {           
+        {
             if (binary != null)
             {
                 //int pos = 16;

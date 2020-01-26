@@ -879,7 +879,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 4401910886690355667}
-  binary: 
+  _binary: 
 --- !u!1 &4978226488732572274
 GameObject:
   m_ObjectHideFlags: 0
@@ -1100,7 +1100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 5273894127130686890}
-  binary: 
+  _binary: 
 --- !u!1 &5273894126635478626
 GameObject:
   m_ObjectHideFlags: 0
@@ -1467,7 +1467,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 5273894126635478624}
-  binary: 
+  _binary: 
 --- !u!1 &5273894127905775414
 GameObject:
   m_ObjectHideFlags: 0
@@ -1667,14 +1667,10 @@ MonoBehaviour:
   ObjectID: 
   _name: {fileID: 8766279411844700855}
   _description: {fileID: 3320295448563003735}
-  _imageBinary:
+  imageBinary:
   - {fileID: 6026067799425482619}
   - {fileID: 6746704847974429822}
   - {fileID: 7635369080644572944}
-  _texture2Ds:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   _isDelete: {fileID: 8854244700919981098}
 --- !u!1 &6031142706323678702
 GameObject:

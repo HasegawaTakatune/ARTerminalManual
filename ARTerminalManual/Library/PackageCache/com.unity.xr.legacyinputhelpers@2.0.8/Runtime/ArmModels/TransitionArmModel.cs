@@ -21,6 +21,8 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Events;
+
+#if ENABLE_VR || ENABLE_AR
 using UnityEngine.Experimental.XR.Interaction;
 using UnityEngine.SpatialTracking;
 
@@ -189,7 +191,7 @@ namespace UnityEngine.XR.LegacyInputHelpers
                 m_TorsoRotation = m_CurrentArmModelComponent.torsoRotation;
 #endif
 
-#if ENABLE_VR
+
                 Vector3 angVel;
                 if (TryGetAngularVelocity(poseSource, out angVel) && armModelBlendData.Count > 0)
                 {
@@ -234,7 +236,6 @@ namespace UnityEngine.XR.LegacyInputHelpers
                     Debug.LogErrorFormat(this.gameObject, "Unable to get angular acceleration for node");
                     return false;
                 }
-#endif
 
                 finalPose = new Pose(controllerPosition, controllerRotation);
                 return true;
@@ -253,3 +254,5 @@ namespace UnityEngine.XR.LegacyInputHelpers
 #endif
     }
 }
+
+#endif

@@ -4,6 +4,13 @@ All notable changes to this package will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [2.0.8] - 2020-02-13
+Roll up of fixes from 1.3.9->1.3.11
+
+## [2.0.7] - 2019-12-18
+Fixes for 2020.1 deprecation of features. (from 1.3.9)
+Fixes switch compile errors. (from 1.3.8)
+Fix for PS4 compile error. (from 1.3.7)
 ## [2.0.6] - 2019-07-25
 Fix for incorrect selection logic (from 1.3.6)
 

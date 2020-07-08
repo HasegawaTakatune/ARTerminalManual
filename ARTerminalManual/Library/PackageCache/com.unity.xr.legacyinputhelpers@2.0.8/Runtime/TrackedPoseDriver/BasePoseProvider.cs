@@ -2,11 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SpatialTracking;
 
-#if ENABLE_VR
+
+#if ENABLE_VR || ENABLE_AR
 using UnityEngine.XR;
-#endif
+using UnityEngine.SpatialTracking;
 
 namespace UnityEngine.Experimental.XR.Interaction
 {
@@ -25,3 +25,5 @@ namespace UnityEngine.Experimental.XR.Interaction
         }
     }
 }
+
+#endif

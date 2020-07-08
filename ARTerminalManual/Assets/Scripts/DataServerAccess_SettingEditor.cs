@@ -2,7 +2,6 @@
 using UnityEngine;
 using NCMB;
 using System;
-using System.Collections;
 
 /// <summary>
 /// サーバ間のデータ保存・取得の手続きを行う
@@ -45,7 +44,7 @@ public class DataServerAccess_SettingEditor : MonoBehaviour
     [SerializeField] private GameObject prefab = default;
 
     /// <summary>
-    /// 
+    /// 初期化
     /// </summary>
     private void Start()
     {
@@ -87,6 +86,9 @@ public class DataServerAccess_SettingEditor : MonoBehaviour
             {
                 Delete(DeleteItem);
             }
+
+            GameObject[] objects = content.GetComponentsInChildren<GameObject>();
+            foreach (var obj in objects) { Destroy(obj); }
         }
         catch (Exception e)
         {
@@ -105,6 +107,7 @@ public class DataServerAccess_SettingEditor : MonoBehaviour
             // ACL 読み込み：可　書き込み：可
             NCMBACL acl = new NCMBACL();
             acl.PublicReadAccess = true;
+            acl.PublicWriteAccess = true;
 
             foreach (var item in saveItem)
             {
@@ -131,7 +134,7 @@ public class DataServerAccess_SettingEditor : MonoBehaviour
                     {
                         // 保存
                         case SelectedImage.IMAGE_STATUS_SET:
-                            NCMBFile saveFile = new NCMBFile(item.GetTexture2D_Name(index), item.imageBinary[index].Binary); //{ ACL = acl };
+                            NCMBFile saveFile = new NCMBFile(item.GetTexture2D_Name(index), item.imageBinary[index].Binary) { ACL = acl };
                             saveFile.SaveAsync((NCMBException e) => { if (e != null) throw e; });
                             break;
                         // 削除
@@ -211,54 +214,24 @@ public class DataServerAccess_SettingEditor : MonoBehaviour
             });
 
             query.FindAsync((List<NCMBObject> objectList, NCMBException e) =>
-            {
-                if (e != null) throw e;
-                Common.PANEL_DATA_SET ds = new Common.PANEL_DATA_SET();
-                foreach (var item in objectList)
-                {
-                    // データの取得
-                    ds.object_ID = item.ObjectId;
-                    ds.name = item[OBJECT_NAME].ToString();
-                    ds.description = item[OBJECT_DESCRIPTION].ToString();
+           {
+               if (e != null) throw e;
+               Common.PANEL_DATA_SET ds = new Common.PANEL_DATA_SET();
+               foreach (var item in objectList)
+               {
+                   // データの取得
+                   ds.object_ID = item.ObjectId;
+                   ds.name = item[OBJECT_NAME].ToString();
+                   ds.description = item[OBJECT_DESCRIPTION].ToString();
 
-                    ds.image1State = (int.TryParse(item[OBJECT_IMAGE1_STATE].ToString(), out int result) ? result : SelectedImage.IMAGE_STATUS_NONE);
-                    ds.image2State = (int.TryParse(item[OBJECT_IMAGE2_STATE].ToString(), out result) ? result : SelectedImage.IMAGE_STATUS_NONE);
-                    ds.imageMarkerState = (int.TryParse(item[OBJECT_IMAGE_MARKER_STATE].ToString(), out result) ? result : SelectedImage.IMAGE_STATUS_NONE);
+                   ds.image1State = (int.TryParse(item[OBJECT_IMAGE1_STATE].ToString(), out int result) ? result : SelectedImage.IMAGE_STATUS_NONE);
+                   ds.image2State = (int.TryParse(item[OBJECT_IMAGE2_STATE].ToString(), out result) ? result : SelectedImage.IMAGE_STATUS_NONE);
+                   ds.imageMarkerState = (int.TryParse(item[OBJECT_IMAGE_MARKER_STATE].ToString(), out result) ? result : SelectedImage.IMAGE_STATUS_NONE);
 
-                    // 画像1の取得
-                    if (ds.image1State == SelectedImage.IMAGE_STATUS_SET)
-                    {
-                        NCMBFile file = new NCMBFile(ds.name + PanelController.IMAGE1_PATH);
-                        file.FetchAsync((byte[] fileData, NCMBException fileEx) =>
-                        {
-                            if (fileEx != null) ds.image1 = fileData;
-                            else throw fileEx;
-                        });
-                    }
-                    // 画像2の取得
-                    if (ds.image2State == SelectedImage.IMAGE_STATUS_SET)
-                    {
-                        NCMBFile file = new NCMBFile(ds.name + PanelController.IMAGE2_PATH);
-                        file.FetchAsync((byte[] fileData, NCMBException fileEx) =>
-                        {
-                            if (fileEx != null) ds.image2 = fileData;
-                            else throw fileEx;
-                        });
-                    }
-                    // マーカー画像の取得
-                    if (ds.imageMarkerState == SelectedImage.IMAGE_STATUS_SET)
-                    {
-                        NCMBFile file = new NCMBFile(ds.name + PanelController.IMAGE_MARKER_PATH);
-                        file.FetchAsync((byte[] fileData, NCMBException fileEx) =>
-                        {
-                            if (fileEx != null) ds.image_marker = fileData;
-                            else throw fileEx;
-                        });
-                    }
-                    dataSet.Add(ds);
-                }
-                ShowSettingData(dataSet);
-            });
+                   dataSet.Add(ds);
+               }
+               ShowSettingData(dataSet);
+           });
         }
         catch (Exception e)
         {
@@ -290,9 +263,36 @@ public class DataServerAccess_SettingEditor : MonoBehaviour
                 panel.imageBinary[PanelController.IMAGE2].ImageState = item.image2State;
                 panel.imageBinary[PanelController.IMAGE_MARKER].ImageState = item.imageMarkerState;
 
-                panel.imageBinary[PanelController.IMAGE1].Binary = item.image1;
-                panel.imageBinary[PanelController.IMAGE2].Binary = item.image2;
-                panel.imageBinary[PanelController.IMAGE_MARKER].Binary = item.image_marker;
+                // 画像1の取得
+                if (item.image1State == SelectedImage.IMAGE_STATUS_SET)
+                {
+                    NCMBFile file = new NCMBFile(panel.GetTexture2D_Name(PanelController.IMAGE1));
+                    file.FetchAsync((byte[] fileData, NCMBException fileEx) =>
+                    {
+                        if (fileEx == null) panel.imageBinary[PanelController.IMAGE1].Binary = fileData;
+                        else throw fileEx;
+                    });
+                }
+                // 画像2の取得
+                if (item.image2State == SelectedImage.IMAGE_STATUS_SET)
+                {
+                    NCMBFile file = new NCMBFile(panel.GetTexture2D_Name(PanelController.IMAGE2));
+                    file.FetchAsync((byte[] fileData, NCMBException fileEx) =>
+                    {
+                        if (fileEx == null) panel.imageBinary[PanelController.IMAGE2].Binary = fileData;
+                        else throw fileEx;
+                    });
+                }
+                // マーカー画像の取得
+                if (item.imageMarkerState == SelectedImage.IMAGE_STATUS_SET)
+                {
+                    NCMBFile file = new NCMBFile(panel.GetTexture2D_Name(PanelController.IMAGE_MARKER));
+                    file.FetchAsync((byte[] fileData, NCMBException fileEx) =>
+                    {
+                        if (fileEx == null) panel.imageBinary[PanelController.IMAGE_MARKER].Binary = fileData;
+                        else throw fileEx;
+                    });
+                }
             }
         }
         catch (Exception e)

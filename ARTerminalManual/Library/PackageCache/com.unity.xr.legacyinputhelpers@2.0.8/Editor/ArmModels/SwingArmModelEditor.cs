@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+
+#if ENABLE_VR || ENABLE_AR
 using UnityEngine.XR.LegacyInputHelpers;
 
 namespace UnityEditor.XR.LegacyInputHelpers
@@ -99,3 +102,5 @@ namespace UnityEditor.XR.LegacyInputHelpers
         }
     }
 }
+
+#endif

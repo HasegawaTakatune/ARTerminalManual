@@ -7,6 +7,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+#if ENABLE_VR || ENABLE_AR
 #if XR_MANAGEMENT
 
 namespace UnityEngine.SpatialTracking
@@ -107,4 +108,5 @@ namespace UnityEngine.SpatialTracking
         }        
     }
 }
+#endif
 #endif

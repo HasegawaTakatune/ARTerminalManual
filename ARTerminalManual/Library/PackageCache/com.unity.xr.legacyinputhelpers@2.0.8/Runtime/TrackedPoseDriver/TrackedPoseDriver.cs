@@ -1,10 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using UnityEngine.Experimental.XR.Interaction;
 
-#if ENABLE_VR
+#if ENABLE_VR || ENABLE_AR
 using UnityEngine.XR;
+using UnityEngine.Experimental.XR.Interaction;
+#endif
+
+#if ENABLE_AR
 using UnityEngine.XR.Tango;
 #endif
 
@@ -93,7 +96,7 @@ namespace UnityEngine.SpatialTracking
     /// </summary>
     static public class PoseDataSource
     {
-#if ENABLE_VR
+#if ENABLE_AR || ENABLE_VR
         static internal List<XR.XRNodeState> nodeStates = new List<XR.XRNodeState>();        
         static internal PoseDataFlags GetNodePoseData(XR.XRNode node, out Pose resultPose)
         {
@@ -127,7 +130,8 @@ namespace UnityEngine.SpatialTracking
         /// <returns>Retuns a bitflag which represents which data has been retrieved from the provided pose source</returns>                            
         static public PoseDataFlags GetDataFromSource(TrackedPoseDriver.TrackedPose poseSource, out Pose resultPose)
         {
-#if ENABLE_VR
+
+#if ENABLE_AR || ENABLE_VR
             switch (poseSource)
             {
                 case TrackedPoseDriver.TrackedPose.RemotePose:
@@ -184,7 +188,7 @@ namespace UnityEngine.SpatialTracking
        
         static PoseDataFlags TryGetTangoPose(out Pose pose)
         {
-#if ENABLE_VR
+#if ENABLE_AR
             PoseData poseOut;
             if (TangoInputTracking.TryGetPoseAtTime(out poseOut) && poseOut.statusCode == PoseStatus.Valid)
             {
@@ -330,6 +334,7 @@ namespace UnityEngine.SpatialTracking
             return false;
         }
 
+#if ENABLE_VR || ENABLE_AR
         [SerializeField]
         BasePoseProvider m_PoseProviderComponent = null;
         /// <summary>
@@ -347,14 +352,16 @@ namespace UnityEngine.SpatialTracking
                 m_PoseProviderComponent = value;
             }
         }
+#endif
 
         PoseDataFlags GetPoseData(DeviceType device, TrackedPose poseSource, out Pose resultPose)
         {
+#if ENABLE_VR || ENABLE_AR            
             if (m_PoseProviderComponent != null)
             {
                 return m_PoseProviderComponent.GetPoseFromProvider(out resultPose);
             }
-
+#endif
             return PoseDataSource.GetDataFromSource(poseSource, out resultPose);
         }
 
@@ -459,23 +466,30 @@ namespace UnityEngine.SpatialTracking
         protected virtual void Awake()
         {
             CacheLocalPosition();
-
+#if UNITY_2019_3_OR_NEWER
+            //  deprecated functionality in 2020.1
+#else
             if (HasStereoCamera())
             {
-#if ENABLE_VR
+#if ENABLE_AR || ENABLE_VR
                 XRDevice.DisableAutoXRCameraTracking(GetComponent<Camera>(), true);
 #endif
             }
+#endif
         }
 
         protected virtual void OnDestroy()
         {
+#if UNITY_2019_3_OR_NEWER
+            //  deprecated functionality in 2020.1
+#else
             if (HasStereoCamera())
             {
-#if ENABLE_VR
+#if ENABLE_AR || ENABLE_VR
                 XRDevice.DisableAutoXRCameraTracking(GetComponent<Camera>(), false);
 #endif
             }
+#endif
         }
 
         protected virtual void OnEnable()

@@ -1,7 +1,4 @@
-﻿using UnityEngine;
-using GoogleARCore;
-using System.Collections;
-
+﻿
 /// <summary>
 /// コモンアイテム
 /// </summary>

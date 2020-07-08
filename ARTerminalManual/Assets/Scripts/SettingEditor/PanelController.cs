@@ -60,28 +60,6 @@ public class PanelController : MonoBehaviour
     /// </summary>
     [SerializeField] public SelectedImage[] imageBinary = new SelectedImage[3];
 
-    ///// <summary>
-    ///// 画像バイナリの設定
-    ///// </summary>
-    ///// <param name="index">0:イメージ画像１　1:イメージ画像２　2:QRマーカー</param>
-    ///// <param name="value">バイナリ</param>
-    //public void SetImageBinary(int index, byte[] value)
-    //{
-    //    imageBinary[index].Binary = value;
-    //}
-    ///// <summary>
-    ///// 画像バイナリの取得
-    ///// </summary>
-    ///// <param name="index">0:イメージ画像１　1:イメージ画像２　2:QRマーカー</param>
-    ///// <returns>バイナリデータ</returns>
-    //public byte[] GetImageBinary(int index) { return imageBinary[index].Binary; }
-    ///// <summary>
-    ///// 画像ステータスの取得
-    ///// </summary>
-    ///// <param name="index">0:イメージ画像１　1:イメージ画像２　2:QRマーカー</param>
-    ///// <returns>ステータス</returns>
-    //public int GetImageState(int index) { return imageBinary[index].ImageState; }
-
     /// <summary>
     /// イメージ画像の登録名を取得
     /// </summary>

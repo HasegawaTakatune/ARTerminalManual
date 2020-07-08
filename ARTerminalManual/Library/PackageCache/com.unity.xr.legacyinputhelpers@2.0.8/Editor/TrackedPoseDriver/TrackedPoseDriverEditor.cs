@@ -4,6 +4,8 @@ using UnityEditorInternal;
 using System.Collections;
 using System.Collections.Generic;
 using System;
+
+#if ENABLE_VR || ENABLE_AR
 using UnityEngine.Experimental.XR.Interaction;
 
 namespace UnityEngine.SpatialTracking
@@ -100,3 +102,5 @@ namespace UnityEngine.SpatialTracking
         }
     }
 }
+
+#endif
